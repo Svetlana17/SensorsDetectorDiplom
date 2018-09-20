@@ -17,8 +17,8 @@ import rx.Subscription;
  * Draws graph of sensor events
  */
 public class SensorPlotter {
-    public static final int MAX_DATA_POINTS = 50;
-    public static final int VIEWPORT_SECONDS = 5;
+    public static final int MAX_DATA_POINTS = 400;
+    public static final double VIEWPORT_SECONDS = 8;///?
     public static final int FPS = 10;
 
     @NonNull
@@ -37,6 +37,7 @@ public class SensorPlotter {
     private Subscription mSubscription;
     private String state;
     private Map<String,Double> incValue;
+    private float On_1 = 1;
 
     public SensorPlotter(@NonNull String name, @NonNull  GraphView graphView,
                          @NonNull Observable<SensorEvent> sensorEventObservable,String state,Map<String,Double> incValue) {
@@ -94,7 +95,8 @@ public class SensorPlotter {
         switch (state) {
             case "X":
                 appendData(mSeriesXs, event.values[0]);
-                appendData(mSeriesXf, event.values[0] + incValue.get("X"));
+             //   appendData(mSeriesXf, event.values[0] + incValue.get("X"));
+                appendData(mSeriesXf, (On_1 + incValue.get("X") * (event.values[0] - On_1)));
                 break;
             case "Y":
                 appendData(mSeriesYs, event.values[1]);

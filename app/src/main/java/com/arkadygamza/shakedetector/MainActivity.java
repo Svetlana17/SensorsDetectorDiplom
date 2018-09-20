@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private Observable<?> mShakeObservable;
     private Subscription mShakeSubscription;
-    public String state = "DEFAULT";
+    public String state = "DEFAULT";//значение по умолчанию
     public Map<String, Double> increaseValue;
     EditText editValue;
 
@@ -112,8 +112,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnZ.setEnabled(false);
         btnCancel.setEnabled(false);
         btnAll.setEnabled(false);
-
+//поток стрингов
         Observable<String> valueObservable = RxEditText.getTextWatcherObservable(editValue);
+        //принимаем 2 потока стрингов valueObservable, valueObservable, их обработка и в результате обработки выдаем поток boolean
+
         Observable.combineLatest(valueObservable, valueObservable, new Func2<String, String, Boolean>() {
             @Override
             public Boolean call(String s, String s2) {
@@ -122,7 +124,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 else
                     return true;
             }
-        }).subscribe(new Action1<Boolean>() {
+        }).subscribe(new Action1<Boolean>() {//gприняли поток Boolena  передали их в метод Call
             @Override
             public void call(Boolean aBoolean) {
                 btnX.setEnabled(aBoolean);
@@ -176,7 +178,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void setupPlotters() {
         SensorManager sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-        List<Sensor> linearAccSensors = sensorManager.getSensorList(Sensor.TYPE_LINEAR_ACCELERATION);
+        List<Sensor> linearAccSensors = sensorManager.getSensorList(Sensor.TYPE_ACCELEROMETER);
         mPlotters.add(new SensorPlotter("LIN", (GraphView) findViewById(R.id.graph_accelerometr), SensorEventObservableFactory.createSensorEventObservable(linearAccSensors.get(0), sensorManager), state, increaseValue));
     }
 
