@@ -18,8 +18,8 @@ import rx.Subscription;
  */
 public class SensorPlotter {
     public static final int MAX_DATA_POINTS = 400;
-    public static final double VIEWPORT_SECONDS = 8;///?
-    public static final int FPS = 10;
+    public static final double VIEWPORT_SECONDS = 10;///частота опросы выводим на экран?
+    public static final int FPS = 10;//число кадров в единицу времени
 
     @NonNull
     private final String mName;

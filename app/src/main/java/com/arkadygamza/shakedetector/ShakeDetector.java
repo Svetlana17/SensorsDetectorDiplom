@@ -33,9 +33,9 @@ public class ShakeDetector {
     @NonNull
     private static Observable<SensorEvent> createAccelerationObservable(@NonNull Context context) {
         SensorManager mSensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
-        List<Sensor> sensorList = mSensorManager.getSensorList(Sensor.TYPE_LINEAR_ACCELERATION);
+        List<Sensor> sensorList = mSensorManager.getSensorList(Sensor.TYPE_ACCELEROMETER);
         if (sensorList == null || sensorList.isEmpty()) {
-            throw new IllegalStateException("Device has no linear acceleration sensor");
+            throw new IllegalStateException("Device has no  acceleration sensor");
         }
 
         return SensorEventObservableFactory.createSensorEventObservable(sensorList.get(0), mSensorManager);
