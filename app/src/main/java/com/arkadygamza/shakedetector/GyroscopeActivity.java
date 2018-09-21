@@ -63,17 +63,17 @@ public class GyroscopeActivity extends AppCompatActivity implements View.OnClick
                         break;
 
                     case 1:
-                        state = "X";
+                        state = "XG";
                         changeState(state);
                         break;
 
                     case 2:
-                        state = "Y";
+                        state = "YG";
                         changeState(state);
                         break;
 
                     case 3:
-                        state = "Z";
+                        state = "ZG";
                         changeState(state);
                         break;
                     default:

@@ -98,13 +98,28 @@ public class SensorPlotter {
              //   appendData(mSeriesXf, event.values[0] + incValue.get("X"));
                 appendData(mSeriesXf, (On_1 + incValue.get("X") * (event.values[0] - On_1)));
                 break;
+                case "XG":
+                appendData(mSeriesXs, event.values[0]);
+             //   appendData(mSeriesXf, event.values[0] + incValue.get("X"));
+                appendData(mSeriesXf, (On_1 + incValue.get("X") * (event.values[0] - On_1))*5);
+                break;
             case "Y":
                 appendData(mSeriesYs, event.values[1]);
                 appendData(mSeriesYf, event.values[1] + incValue.get("Y"));
                 break;
+            case "YG":
+                appendData(mSeriesYs, event.values[1]);
+                //   appendData(mSeriesXf, event.values[0] + incValue.get("X"));
+                appendData(mSeriesYf, (On_1 + incValue.get("Y") * (event.values[1] - On_1))*5);
+                break;
             case "Z":
                 appendData(mSeriesZs, event.values[2]);
                 appendData(mSeriesZf, event.values[2] + incValue.get("Z"));
+                break;
+            case "ZG":
+                appendData(mSeriesZs, event.values[2]);
+                //   appendData(mSeriesXf, event.values[0] + incValue.get("X"));
+                appendData(mSeriesZf, (On_1 + incValue.get("Z") * (event.values[2] - On_1))*5);
                 break;
             case "DEFAULT":
                 appendData(mSeriesXs, event.values[0]);

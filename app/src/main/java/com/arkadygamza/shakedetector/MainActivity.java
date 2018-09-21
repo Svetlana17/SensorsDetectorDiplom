@@ -161,7 +161,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.line_accelerometr:
                 state = "accelerometr";
                 return true;
-
+//            case R.id.giroscope_acclerometr:
+//                Intent intents = new Intent(MainActivity.this,SensorGiroscopeActivity.class);
+//                startActivity(intents);
+//                return true;
             default:
                 return true;
         }
