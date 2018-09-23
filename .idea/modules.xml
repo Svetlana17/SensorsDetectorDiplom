@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/12ShakeDetector-master.iml" filepath="$PROJECT_DIR$/12ShakeDetector-master.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/SensorsDetector.iml" filepath="$PROJECT_DIR$/.idea/SensorsDetector.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/SensorsDetectorDiplom.iml" filepath="$PROJECT_DIR$/.idea/SensorsDetectorDiplom.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

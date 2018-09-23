@@ -16,14 +16,18 @@ import rx.Subscription;
 /**
  * Draws graph of sensor events
  */
+
 public class SensorPlotter {
     public static final int MAX_DATA_POINTS = 400;
-    public static final double VIEWPORT_SECONDS = 10;///частота опросы выводим на экран?
+    public static final double VIEWPORT_SECONDS = 5;///частота опросы выводим на экран?
     public static final int FPS = 10;//число кадров в единицу времени
+
 
     @NonNull
     private final String mName;
-
+  private static  Double oldValue;
+    private static  Double alpha=0.01;
+    private static  Double K=0.01;
     private final long mStart = System.currentTimeMillis();
 
     protected final LineGraphSeries<DataPoint> mSeriesXs;
@@ -32,6 +36,13 @@ public class SensorPlotter {
     protected final LineGraphSeries<DataPoint> mSeriesYf;
     protected final LineGraphSeries<DataPoint> mSeriesZs;
     protected final LineGraphSeries<DataPoint> mSeriesZf;
+
+    /*
+ private double k = 0.05;
+     protected final LineGraphSeries<DataPoint> mSeriesXg;
+    protected final LineGraphSeries<DataPoint> mSeriesYg;
+    protected final LineGraphSeries<DataPoint> mSeriesZg;
+     */
     private final Observable<SensorEvent> mSensorEventObservable;
     private long mLastUpdated = mStart;
     private Subscription mSubscription;
@@ -63,6 +74,12 @@ public class SensorPlotter {
         mSeriesYf = new LineGraphSeries<>();
         mSeriesZs = new LineGraphSeries<>();
         mSeriesZf = new LineGraphSeries<>();
+/*      mSeriesXg= new LineGraphSeries<>();
+        mSeriesYg= new LineGraphSeries<>();
+        mSeriesZg= new LineGraphSeries<>();
+        mSeriesXg.setColor(Color.DKGRAY);
+        mSeriesYg.setColor(Color.BLACK);
+        mSeriesZg.setColor(Color.GRAY);*/
 
         mSeriesXs.setColor(Color.RED);
         mSeriesXf.setColor(Color.YELLOW);
@@ -77,6 +94,10 @@ public class SensorPlotter {
         graphView.addSeries(mSeriesYf);
         graphView.addSeries(mSeriesZs);
         graphView.addSeries(mSeriesZf);
+        /* graphView.addSeries(mSeriesXg);
+        graphView.addSeries(mSeriesYg);
+        graphView.addSeries(mSeriesZg)*/
+
     }
 
 
@@ -95,31 +116,38 @@ public class SensorPlotter {
         switch (state) {
             case "X":
                 appendData(mSeriesXs, event.values[0]);
-             //   appendData(mSeriesXf, event.values[0] + incValue.get("X"));
-                appendData(mSeriesXf, (On_1 + incValue.get("X") * (event.values[0] - On_1)));
+                //   appendData(mSeriesXf, event.values[0] + incValue.get("X"));
+System.out.println(average(event.values[0]));
+//                appendData(mSeriesXf, (On_1 + incValue.get("X") * (event.values[0] - On_1)));
+                appendData(mSeriesXf, average(event.values[0]));
                 break;
-                case "XG":
+            case "XG":
                 appendData(mSeriesXs, event.values[0]);
-             //   appendData(mSeriesXf, event.values[0] + incValue.get("X"));
-                appendData(mSeriesXf, (On_1 + incValue.get("X") * (event.values[0] - On_1))*5);
+                //   appendData(mSeriesXf, event.values[0] + incValue.get("X"));
+              //  appendData(mSeriesXf, (On_1 + incValue.get("X") * (event.values[0] - On_1))*5);
+               appendData(mSeriesXf, (1-K*incValue.get("X")));
                 break;
             case "Y":
                 appendData(mSeriesYs, event.values[1]);
-                appendData(mSeriesYf, event.values[1] + incValue.get("Y"));
+                appendData(mSeriesYf, average(event.values[1]));
                 break;
             case "YG":
                 appendData(mSeriesYs, event.values[1]);
                 //   appendData(mSeriesXf, event.values[0] + incValue.get("X"));
-                appendData(mSeriesYf, (On_1 + incValue.get("Y") * (event.values[1] - On_1))*5);
+            //    appendData(mSeriesYf, (On_1 + incValue.get("Y") * (event.values[1] - On_1))*5);
+                appendData(mSeriesYf, (1-K*incValue.get("Y")));
+            //    appendData(mSeriesYg, (1-k*incValue.get("Y")));
                 break;
             case "Z":
                 appendData(mSeriesZs, event.values[2]);
-                appendData(mSeriesZf, event.values[2] + incValue.get("Z"));
+                appendData(mSeriesZf, average(event.values[2]));
                 break;
             case "ZG":
                 appendData(mSeriesZs, event.values[2]);
                 //   appendData(mSeriesXf, event.values[0] + incValue.get("X"));
-                appendData(mSeriesZf, (On_1 + incValue.get("Z") * (event.values[2] - On_1))*5);
+             //   appendData(mSeriesZf, (On_1 + incValue.get("Z") * (event.values[2] - On_1)));
+                appendData(mSeriesZf, (1-K*incValue.get("Z")));
+         //       appendData(mSeriesZg, (1-k*incValue.get("Z")));
                 break;
             case "DEFAULT":
                 appendData(mSeriesXs, event.values[0]);
@@ -130,6 +158,18 @@ public class SensorPlotter {
                 appendData(mSeriesZf, event.values[2] + incValue.get("Z"));
                 break;
         }
+    }
+    public double average(double value) {
+        if (oldValue == null) {
+            oldValue = value;
+            //  return value;
+
+        }
+
+        double newValue=alpha*value+(1-alpha)*oldValue;
+        oldValue = newValue;
+        return newValue;
+
     }
 
     private boolean canUpdateUi() {
