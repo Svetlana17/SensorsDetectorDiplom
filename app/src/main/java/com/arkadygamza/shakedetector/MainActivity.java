@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         changeState(state);
                         break;
                 }
-                Toast.makeText(getApplicationContext(), i + " + " + l, Toast.LENGTH_SHORT).show();
+               // Toast.makeText(getApplicationContext(), i + " + " + l, Toast.LENGTH_SHORT).show();
             }
 
             @Override

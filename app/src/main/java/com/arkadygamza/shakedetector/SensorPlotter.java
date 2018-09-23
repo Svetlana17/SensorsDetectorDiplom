@@ -19,7 +19,7 @@ import rx.Subscription;
 
 public class SensorPlotter {
     public static final int MAX_DATA_POINTS = 400;
-    public static final double VIEWPORT_SECONDS = 5;///частота опросы выводим на экран?
+    public static final double VIEWPORT_SECONDS =5;///частота опросы выводим на экран?
     public static final int FPS = 10;//число кадров в единицу времени
 
 
@@ -48,7 +48,7 @@ public class SensorPlotter {
     private Subscription mSubscription;
     private String state;
     private Map<String,Double> incValue;
-    private float On_1 = 1;
+   // private float On_1 = 1;
 
     public SensorPlotter(@NonNull String name, @NonNull  GraphView graphView,
                          @NonNull Observable<SensorEvent> sensorEventObservable,String state,Map<String,Double> incValue) {
@@ -84,8 +84,10 @@ public class SensorPlotter {
         mSeriesXs.setColor(Color.RED);
         mSeriesXf.setColor(Color.YELLOW);
         mSeriesYs.setColor(Color.GREEN);
-        mSeriesYf.setColor(Color.GRAY);
+      //  mSeriesYf.setColor(Color.GRAY);
+        mSeriesYf.setColor(Color.WHITE);
         mSeriesZs.setColor(Color.BLUE);
+        mSeriesZs.setColor(Color.MAGENTA);
         mSeriesZf.setColor(Color.CYAN);
 
         graphView.addSeries(mSeriesXs);

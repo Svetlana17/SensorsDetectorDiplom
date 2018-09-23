@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="list">
-        <item>default</item>
-        <item>X</item>
-        <item>Y</item>
-        <item>Z</item>
+        <item>Все оси</item>
+        <item>Ось X</item>
+        <item>Ось Y</item>
+        <item>Ось Z</item>
     </string-array>
 </resources>

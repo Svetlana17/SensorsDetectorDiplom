@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@android:color/darker_gray" />
+        android:background="@color/colorBlack" />
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -48,27 +48,28 @@
 
         <Button
             android:id="@+id/btn_z"
-            android:layout_width="45dp"
+            android:layout_width="60dp"
             android:layout_height="45dp"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/btn_y"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_toStartOf="@+id/btn_all"
             android:text="Z" />
 
         <Button
             android:id="@+id/btn_all"
-            android:layout_width="78dp"
+            android:layout_width="70dp"
             android:layout_height="45dp"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/btn_z"
-            android:text="all" />
+            android:layout_alignParentTop="true"
+            android:layout_toStartOf="@+id/btn_cancel"
+            android:text="Все" />
 
         <Button
             android:id="@+id/btn_cancel"
-            android:layout_width="85dp"
+            android:layout_width="70dp"
             android:layout_height="45dp"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/btn_all"
-            android:text="cancel" />
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:text="Отмена" />
 
 
     </RelativeLayout>

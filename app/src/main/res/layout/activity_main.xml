@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:background="@android:color/darker_gray" />
+            android:background="@color/colorBlack" />
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -25,22 +25,23 @@
 
         <EditText
             android:id="@+id/value_edit"
-            android:layout_width="50dp"
+            android:layout_width="65dp"
             android:layout_height="match_parent"
             android:layout_centerVertical="true"
             android:inputType="numberDecimal" />
 
         <Button
             android:id="@+id/btn_x"
-            android:layout_width="45dp"
+            android:layout_width="50dp"
             android:layout_height="45dp"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/value_edit"
+
             android:text="X" />
 
         <Button
             android:id="@+id/btn_y"
-            android:layout_width="45dp"
+            android:layout_width="50dp"
             android:layout_height="45dp"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/btn_x"
@@ -48,7 +49,7 @@
 
         <Button
             android:id="@+id/btn_z"
-            android:layout_width="45dp"
+            android:layout_width="50dp"
             android:layout_height="45dp"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/btn_y"
@@ -56,7 +57,7 @@
 
         <Button
             android:id="@+id/btn_all"
-            android:layout_width="78dp"
+            android:layout_width="50dp"
             android:layout_height="45dp"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/btn_z"
@@ -64,7 +65,7 @@
 
         <Button
             android:id="@+id/btn_cancel"
-            android:layout_width="85dp"
+            android:layout_width="80dp"
             android:layout_height="45dp"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/btn_all"
