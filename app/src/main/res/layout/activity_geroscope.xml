@@ -25,14 +25,14 @@
 
         <EditText
             android:id="@+id/value_edit"
-            android:layout_width="50dp"
+            android:layout_width="65dp"
             android:layout_height="match_parent"
             android:layout_centerVertical="true"
             android:inputType="numberDecimal" />
 
         <Button
             android:id="@+id/btn_x"
-            android:layout_width="45dp"
+            android:layout_width="50dp"
             android:layout_height="45dp"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/value_edit"
@@ -40,7 +40,7 @@
 
         <Button
             android:id="@+id/btn_y"
-            android:layout_width="45dp"
+            android:layout_width="50dp"
             android:layout_height="45dp"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/btn_x"
@@ -48,27 +48,25 @@
 
         <Button
             android:id="@+id/btn_z"
-            android:layout_width="60dp"
+            android:layout_width="50dp"
             android:layout_height="45dp"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_toStartOf="@+id/btn_all"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/btn_y"
             android:text="Z" />
-
         <Button
             android:id="@+id/btn_all"
-            android:layout_width="70dp"
+            android:layout_width="50dp"
             android:layout_height="45dp"
-            android:layout_alignParentTop="true"
-            android:layout_toStartOf="@+id/btn_cancel"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/btn_z"
             android:text="Все" />
 
         <Button
             android:id="@+id/btn_cancel"
-            android:layout_width="70dp"
-            android:layout_height="45dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentTop="true"
+            android:layout_width="85dp"
+            android:layout_height="47dp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/btn_all"
             android:text="Отмена" />
 
 
